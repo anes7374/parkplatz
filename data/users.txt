@@ -1,0 +1,6 @@
+# NUR FÜR TESTS: Anmeldedaten im Klartext.
+# Diese Datei kann jeder im Browser öffnen – keine echten Passwörter eintragen!
+# Später ersetzt ein Backend mit Datenbank diese Datei.
+#
+# Aufbau: eine Zeile pro Benutzer, E-Mail und Passwort mit ; getrennt.
+# Zeilen mit # am Anfang und leere Zeilen werden ignoriert.

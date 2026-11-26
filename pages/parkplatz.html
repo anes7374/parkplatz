@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parkplatzverwaltung – HTL Braunau</title>
+  <link rel="stylesheet" href="../css/parkplatz.css?v=20261126a">
+</head>
+<body>
+  <!-- Obere Leiste: Titel links, angemeldete Person + Abmelden rechts -->
+  <header class="top-bar">
+    <div>
+      <p class="top-bar-subtitle">HTL Braunau</p>
+      <h1 class="top-bar-title">Parkplatzverwaltung</h1>
+    </div>
+    <div class="user-box">
+      <span class="user-email" id="userEmail"></span>
+      <button type="button" class="btn-secondary" id="logoutBtn">Abmelden</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <!-- Kalenderwoche wählen. Die Pfeile sind Links auf dieselbe Seite mit
+         einer anderen Woche (?week=…); parkplatz.js setzt die Adressen. -->
+    <nav class="week-nav" aria-label="Kalenderwoche">
+      <a class="week-arrow" id="prevWeek" aria-label="Vorige Woche">&lsaquo;</a>
+      <p class="week-label" id="weekLabel"></p>
+      <a class="week-arrow" id="nextWeek" aria-label="Nächste Woche">&rsaquo;</a>
+    </nav>
+
+    <!-- Übersicht: freie Plätze und eigener Platz.
+         aria-live: Screenreader lesen Änderungen automatisch vor. -->
+    <section class="summary" aria-live="polite">
+      <p class="summary-count" id="freeCount"></p>
+      <p class="summary-hint" id="ownSpotHint"></p>
+    </section>
+
+    <!-- Legende: erklärt die drei Zustände (Farbe + Text, nie nur Farbe) -->
+    <ul class="legend" aria-label="Legende">
+      <li><span class="legend-dot is-free"></span>Frei</li>
+      <li><span class="legend-dot is-mine"></span>Dein Platz</li>
+      <li><span class="legend-dot is-taken"></span>Belegt</li>
+    </ul>
+
+    <!-- Rückmeldungen (z. B. beschädigte gespeicherte Daten) -->
+    <p class="message" id="message" role="status"></p>
+
+    <!-- Hier erzeugt parkplatz.js die Parkplätze (Links zur Detailseite) -->
+    <div class="spot-grid" id="spotGrid"></div>
+  </main>
+
+  <!-- Reihenfolge wichtig: zuerst die Logik, dann die Seite, die sie benutzt -->
+  <script src="../js/parking-logic.js?v=20261126a"></script>
+  <script src="../js/week-logic.js?v=20261126a"></script>
+  <script src="../js/parking-common.js?v=20261126a"></script>
+  <script src="../js/parkplatz.js?v=20261126a"></script>
+</body>
+</html>

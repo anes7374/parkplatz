@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anmelden – ITSE-Projekt</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <main class="login-card">
+    <!-- Kopfbereich: Schul-Logo und Projektname nebeneinander.
+         width/height = echte Bildgröße, damit der Browser den Platz
+         schon vor dem Laden reserviert (nichts springt). -->
+    <header class="login-header">
+      <div class="brand">
+        <img class="brand-logo" src="assets/logo-htl-braunau.jpg"
+             width="432" height="244" alt="Logo der HTL Braunau">
+        <span>HTL-Braunau</span>
+      </div>
+    </header>
+
+    <!-- Das Formular hat zwei Schritte. Immer nur einer ist sichtbar
+         (gesteuert über die Klasse "is-hidden" in js/login.js). -->
+    <form id="loginForm" novalidate>
+
+      <!-- Schritt 1: E-Mail-Adresse -->
+      <section class="step" id="stepEmail">
+        <h1>Anmelden</h1>
+        <label for="email">E-Mail-Adresse</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          autocomplete="username"
+          placeholder="name@htl-braunau.at"
+          required>
+        <p class="error-text" id="emailError"></p>
+
+        <div class="actions">
+          <button type="button" class="btn-primary" id="nextBtn">Weiter</button>
+        </div>
+      </section>
+
+      <!-- Schritt 2: Passwort (anfangs versteckt) -->
+      <section class="step is-hidden" id="stepPassword">
+        <!-- Zeigt die im ersten Schritt eingegebene E-Mail an -->
+        <button type="button" class="back-link" id="backBtn">&larr; <span id="emailEcho"></span></button>
+
+        <h1>Passwort eingeben</h1>
+        <label for="password">Passwort</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="current-password"
+          maxlength="128"
+          placeholder="Passwort"
+          required>
+        <p class="error-text" id="passwordError"></p>
+
+        <div class="actions">
+          <button type="submit" class="btn-primary" id="submitBtn">Anmelden</button>
+        </div>
+      </section>
+
+    </form>
+
+    <!-- Kontaktdaten der Schule als graues Feld unten in der Karte.
+         <address> ist das passende HTML-Element für Kontaktangaben. -->
+    <address class="school-contact">
+      <strong class="school-name">HTBLA Braunau am Inn</strong>
+      Osternbergerstraße 55<br>
+      A-5280 Braunau am Inn<br>
+      <a href="tel:+437722836900">+43 (0)7722 / 83690 – 0</a><br>
+      <a href="mailto:office@htl-braunau.at">office@htl-braunau.at</a>
+    </address>
+  </main>
+
+  <footer class="page-footer">
+    Schulprojekt &middot; ITSE
+  </footer>
+
+  <script src="js/login-logic.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

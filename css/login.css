@@ -1,0 +1,205 @@
+/* ===== Grundlagen ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-accent: #0067b8;        /* Blau für Buttons/Links */
+  --color-accent-dark: #004e8c;   /* Blau beim Hover */
+  --color-text: #1b1b1b;
+  --color-muted: #605e5c;
+  --color-border: #cbcbcb;
+  --color-error: #a80000;
+  --color-card: #ffffff;
+  --color-footer: #f1f1f1;        /* Hellgrau der Fußzeile */
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  color: var(--color-text);
+
+  /* ===== Hintergrundbild =====
+     Lege dein Bild in den Projektordner (z. B. "hintergrund.png")
+     und passe den Dateinamen unten an.
+     Der Farbverlauf dahinter ist der Rückfall, solange kein Bild da ist. */
+  background-color: #e8f0fb;                 /* Rückfall-Farbe */
+  /* Zwei Ebenen: oben der schwarze Filter, darunter das Foto.
+     Den Wert 0.5 (= 50 % Deckkraft) ändern, um den Filter
+     dunkler (höher, bis 1) oder heller (niedriger, bis 0) zu machen. */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../assets/hintergrund.png");      /* Pfad zählt ab dieser CSS-Datei (css/) */
+  background-size: cover;                    /* Bild füllt die ganze Fläche */
+  background-position: center;               /* Bildmitte bleibt zentriert */
+  background-repeat: no-repeat;              /* Bild nicht kacheln */
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* ===== Anmelde-Karte ===== */
+.login-card {
+  background: var(--color-card);
+  width: 100%;
+  max-width: 420px;
+  /* Mehr Höhe: oben/unten mehr Innenabstand + Mindesthöhe,
+     damit die Karte länglicher wirkt (ca. +1/4 nach unten). */
+  padding: 56px 44px;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+  /* Microsoft-Login ist bewusst eckig – daher nur leicht gerundet */
+  border-radius: 2px;
+}
+
+.login-header {
+  margin-bottom: 24px;
+}
+
+.brand {
+  display: flex;               /* Logo und Text in einer Zeile */
+  align-items: center;         /* vertikal mittig zueinander */
+  gap: 12px;                   /* Abstand zwischen Logo und Text */
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;                 /* Breite passend zum Seitenverhältnis */
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* ===== Formular-Elemente ===== */
+label {
+  display: block;
+  font-size: 13px;
+  color: var(--color-muted);
+  margin-bottom: 4px;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px 0;
+  font-size: 15px;
+  border: none;
+  /* Nur eine Linie unten – typischer Outlook-Stil */
+  border-bottom: 1px solid var(--color-border);
+  outline: none;
+  background: transparent;
+}
+
+input:focus {
+  border-bottom: 2px solid var(--color-accent);
+}
+
+/* ===== Fehlermeldungen ===== */
+.error-text {
+  color: var(--color-error);
+  font-size: 13px;
+  min-height: 18px;   /* Platz reservieren, damit nichts springt */
+  margin-top: 6px;
+}
+
+/* ===== Buttons ===== */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  padding: 8px 28px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 2px;
+  min-width: 108px;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-dark);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== Zurück-Link in Schritt 2 ===== */
+.back-link {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 18px;
+}
+
+.back-link:hover {
+  color: var(--color-text);
+}
+
+/* ===== Schritt-Umschaltung ===== */
+.is-hidden {
+  display: none;
+}
+
+/* ===== Fußzeile ===== */
+.page-footer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* Mindestabstand zwischen Formular und Kontaktfeld, auch wenn die
+   Karte voll ist und margin-top: auto unten keinen Platz mehr hat. */
+.login-card form {
+  margin-bottom: 64px;   /* größer = Karte länger, mehr Luft zum grauen Feld */
+}
+
+/* ===== Kontaktdaten unten in der Karte =====
+   margin-top: auto schiebt das Feld in der Karte (Flex-Spalte) ganz
+   nach unten. Die negativen Ränder heben das Padding der Karte auf,
+   damit das graue Feld links, rechts und unten bis an den Kartenrand geht. */
+.school-contact {
+  margin: auto -44px -56px;
+  padding: 24px 44px;
+  background: var(--color-footer);
+  font-style: normal;   /* <address> ist im Browser sonst kursiv */
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.school-name {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+/* Telefon und E-Mail sind klickbar, sehen aber wie normaler Text aus */
+.school-contact a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.school-contact a:hover {
+  text-decoration: underline;
+}

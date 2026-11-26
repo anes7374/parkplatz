@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parkplatz – HTL Braunau</title>
+  <link rel="stylesheet" href="../css/parkplatz.css?v=20261126a">
+</head>
+<body>
+  <!-- Obere Leiste: gleich wie in der Übersicht -->
+  <header class="top-bar">
+    <div>
+      <p class="top-bar-subtitle">HTL Braunau</p>
+      <p class="top-bar-title">Parkplatzverwaltung</p>
+    </div>
+    <div class="user-box">
+      <span class="user-email" id="userEmail"></span>
+      <button type="button" class="btn-secondary" id="logoutBtn">Abmelden</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <a class="back-link" id="backLink" href="parkplatz.html">&larr; Zurück zur Übersicht</a>
+
+    <!-- Details zu einem Platz. Die Inhalte füllt platz.js aus.
+         Startet versteckt und wird erst gezeigt, wenn alles geladen ist –
+         so erscheint bei einem Fehler nie eine leere Karte. -->
+    <section class="detail" id="detail" hidden>
+      <h1 class="detail-title" id="spotTitle"></h1>
+      <p class="week-label is-small" id="weekLabel"></p>
+      <p class="detail-status">
+        <span class="legend-dot" id="statusDot"></span>
+        <span id="statusText"></span>
+      </p>
+
+      <!-- <dl> = Liste aus Begriff (dt) und Beschreibung (dd) -->
+      <dl class="detail-list">
+        <dt>Bereich</dt>
+        <dd id="areaText"></dd>
+        <dt>Lage</dt>
+        <dd id="positionText"></dd>
+        <dt>Hinweis</dt>
+        <dd id="hintText"></dd>
+      </dl>
+
+      <p class="message" id="message" role="status"></p>
+
+      <div class="detail-actions">
+        <button type="button" class="btn-primary" id="actionBtn"></button>
+      </div>
+    </section>
+
+    <!-- Wird angezeigt, wenn die Adresse keinen gültigen Platz enthält -->
+    <section class="detail" id="notFound" hidden>
+      <h1 class="detail-title" id="notFoundTitle">Platz nicht gefunden</h1>
+      <p class="summary-hint" id="notFoundText">Diesen Parkplatz gibt es nicht. Wähle in der Übersicht einen Platz aus.</p>
+    </section>
+  </main>
+
+  <!-- Reihenfolge wichtig: Logik, dann gemeinsamer Teil, dann diese Seite -->
+  <script src="../js/parking-logic.js?v=20261126a"></script>
+  <script src="../js/week-logic.js?v=20261126a"></script>
+  <script src="../js/parking-common.js?v=20261126a"></script>
+  <script src="../js/platz.js?v=20261126a"></script>
+</body>
+</html>
