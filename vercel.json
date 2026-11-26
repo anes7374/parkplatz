@@ -1,9 +1,24 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/parkplatz/", "permanent": false },
-    { "source": "/parkplatz", "destination": "/parkplatz/", "permanent": false }
+    {
+      "source": "/",
+      "destination": "/parkplatz/",
+      "permanent": false
+    },
+    {
+      "source": "/parkplatz",
+      "destination": "/parkplatz/",
+      "permanent": false
+    }
   ],
   "rewrites": [
-    { "source": "/parkplatz/:path*", "destination": "/:path*" }
+    {
+      "source": "/parkplatz/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/parkplatz/:path*",
+      "destination": "/:path*"
+    }
   ]
 }
